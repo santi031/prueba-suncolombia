@@ -1,0 +1,54 @@
+<div class="container-fluid vh-100 p-0 mt-3 min-vw-100 d-flex align-items-start justify-content-center">
+    <table class="table w-75">
+      <thead>
+        <tr class="text-center table-primary">
+          <th scope="col">Nombre</th>
+          @if (dataTable[0].dane) {
+            <th scope="col">Dane</th>
+          }
+          @if (dataTable[0].sede) {
+            <th scope="col">Sede</th>
+          }
+          @if (dataTable[0]['institución']) {
+            <th scope="col">Institución</th>
+          }
+          @if (dataTable[0].municipio) {
+            <th scope="col">Municipio</th>
+          }
+          @if (dataTable[0].numGrupo) {
+            <th scope="col">Número de Grupo</th>
+          }
+          @if (!dataTable[0].municipio) {
+            <th scope="col">Buscar Información</th>
+          }
+        </tr>
+      </thead>
+      <tbody class="">
+        @for (item of dataTable; track $index ) {
+        <tr class="table-info text-center">
+            <td>{{item.nombre}}</td>
+            @if (item.dane) {
+              <td>{{item.dane}}</td>
+            }
+            @if (item.sede) {
+              <td>{{item.sede}}</td>
+            }
+            @if (item['institución']) {
+              <td>{{item['institución']}}</td>
+            }
+            @if (item.municipio) {
+              <td>{{item.municipio}}</td>
+            }
+            @if (item.numGrupo) {
+              <td>{{item.numGrupo}}</td>
+            }
+            @if (!item.municipio) {
+              <td>
+                <button class="btn btn-primary" (click)="searchData(item)" ><i class="bi bi-search"></i></button>
+              </td>
+            }
+          </tr>
+        }
+        </tbody>
+    </table>
+</div>

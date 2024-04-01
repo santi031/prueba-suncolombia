@@ -1,0 +1,14 @@
+<app-header [text]="headerText"></app-header>
+<div class="m-5 pt-1 overflow-hidden">
+  <button class="mt-3 btn btn-primary" (click)="redirectToLogin()"><i class="bi bi-box-arrow-left"></i> Volver al
+    Inicio</button>
+  @if (dataList$ | async; as dataList) {
+    @if (dataList.login == 'Success') {
+    <app-table [dataTable]=dataList.data [body]=body (labelText)="valueResponse($event)"></app-table>
+    } @else {
+    <div class="mt-3 alert alert-danger" role="alert">
+      Hubo un error, no existen datos.
+    </div>
+    }
+  }
+</div>
